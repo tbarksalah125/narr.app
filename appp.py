@@ -17,16 +17,7 @@ client = OpenAI(api_key=api_key)
 # LLM Call Function
 # =========================
 def call_llm(prompt: str) -> str:
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "You are a helpful educational assistant."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.7,
-        )
-        return response.choices[0].message.content
+    return "⚠️ AI غير متاح حالياً.\n\n📖 مثال قصة:\nكان هناك طالب يقرأ الدرس ويحاول فهمه بطريقة سهلة وممتعة.\n\n❓ مثال أسئلة:\n1- ما الفكرة الرئيسية؟\n2- اشرح ما فهمته من النص"
 
     except Exception as e:
         return f"⚠️ AI is unavailable right now.\n\nError: {e}"
