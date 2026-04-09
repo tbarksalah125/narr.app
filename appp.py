@@ -2,8 +2,13 @@ import streamlit as st
 from openai import OpenAI
 
 
-import os
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    st.error("❌ OpenAI API Key is missing!")
+    st.stop()
+
+client = OpenAI(api_key=api_key)
 
 def call_llm(prompt: str) -> str:
     response = client.chat.completions.create(
